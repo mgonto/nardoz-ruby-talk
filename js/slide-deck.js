@@ -356,7 +356,7 @@ SlideDeck.prototype.loadConfig_ = function(config) {
       }
     } else {
       for (var i = 0, p; p = presenters[i]; ++i) {
-        html.push(p.name + ' - ' + p.company);
+        html.push(p.name + ' - ' + p.twitter);
       }
       html = html.join('<br>');
       if (dataConfigContact) {
