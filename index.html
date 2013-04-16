@@ -176,7 +176,62 @@ URL: https://code.google.com/p/io-2012-slides
             </pre>
       </article>
   </slide>
-
+  
+  <slide>
+      <hgroup>
+          <h2>Proc, Lambda, Block, WTF!?</h2>
+      </hgroup>
+      <article>
+            <pre class="prettyprint" data-lang="ruby">
+              #Block
+              (0..2).map {|x| x * 2}
+              
+              (0..2).map do |x|
+                x * 2
+              end
+              
+              #Proc
+              twoTimes = Proc.new do |x|
+                x * 2
+              end
+              
+              #Lambda
+              lambda { |x| x * 2}
+            </pre>
+      </article>
+  </slide>
+  
+  <slide>
+      <hgroup>
+          <h2>Proc, Lambda, Block explained</h2>
+      </hgroup>
+      <article>
+            <pre class="prettyprint" data-lang="ruby">
+              def call
+                yield
+              end
+              
+              def call(&amp;block)
+                block.call()
+              end
+              
+              def run(&amp;block)
+                block.call(2,3)
+                puts "Method called"
+              end 
+              
+              run(Proc.new {|a,b,c|  puts "This works"} )
+              run(lambda {|a,b,c|  puts "This doesn't"} )
+              
+              // This prints Hey Method Called
+              run(Proc.new {|a,b|  return "Hey"} )
+              
+              // This prints Hey
+              run(lambda {|a,b|  return "Hey"} )
+            </pre>
+      </article>
+  </slide>
+  
   <slide>
       <hgroup>
           <h2>Iterators</h2>
@@ -331,6 +386,30 @@ URL: https://code.google.com/p/io-2012-slides
             </pre>
       </article>
   </slide>
+  
+  <slide>
+      <hgroup>
+          <h2>Who am I?</h2>
+      </hgroup>
+      <article>
+            <pre class="prettyprint" data-lang="ruby">
+              class Person
+                def name
+                  self.age #=> 4
+                  "Gonto"
+                end
+                
+                def age
+                  4
+                end
+               
+                self.name #=> "Person"
+              end
+              
+              self #=> "main"
+            </pre>
+      </article>
+  </slide>
 
   <slide>
       <hgroup>
@@ -399,10 +478,13 @@ URL: https://code.google.com/p/io-2012-slides
 
                 Nardoz.example      # => "EXAMPLE!"
                 Nardoz.new.example  # => "example"
+                
+                # This actually aren't class methods, but methods on the EigenClass
+                # but we won't complicate us that much today :)
             </pre>
       </article>
   </slide>
-
+  
   <slide>
       <hgroup>
           <h2>Conventions</h2>
