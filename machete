@@ -1,0 +1,26 @@
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+
+rails generate bootstrap:install less
+
+rails g bootstrap:layout application fixed
+
+index
+new
+create
+show
+edit
+update
+destroy
+
+photos_path returns /photos
+new_photo_path returns /photos/new
+edit_photo_path(:id) returns /photos/:id/edit
+photo_path(:id) returns /photos/:id (for instance, photo_path(10) returns /photos/10)
+
+resources :magazines do
+  resources :ads
+end
+
+magazine_ads_url

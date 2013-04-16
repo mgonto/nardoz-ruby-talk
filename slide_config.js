@@ -1,7 +1,7 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'Ruby_Rails Talk',
+    title: 'Ruby On Rails Talk',
     subtitle: 'Nardoz!',
     //eventTitle: 'Google I/O 2013',
     useBuilds: true, // Default: true. False will turn off slide animation builds.
